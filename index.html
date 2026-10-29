@@ -1,1540 +1,325 @@
-
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OdesaRP — Правила спільноти</title>
-
-<style>
-:root {
-    --bg: #f0f0f0;
-    --white: #ffffff;
-    --text: #202020;
-    --muted: #777777;
-    --border: #e1e1e1;
-    --soft: #f6f6f6;
-    --black: #222222;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 25px;
-}
-
-body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-}
-
-/* HEADER */
-
-.header {
-    height: 70px;
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-}
-
-.header-inner {
-    max-width: 1240px;
-    height: 100%;
-    padding: 0 28px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo {
-    font-size: 21px;
-    font-weight: 900;
-    letter-spacing: 1.5px;
-}
-
-.logo span {
-    color: #858585;
-}
-
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: #777;
-    font-size: 11px;
-    letter-spacing: 1px;
-}
-
-.status {
-    width: 7px;
-    height: 7px;
-    background: #858585;
-    border-radius: 50%;
-}
-
-/* MAIN */
-
-.container {
-    max-width: 1240px;
-    margin: 32px auto;
-    padding: 0 28px;
-}
-
-/* INTRO */
-
-.intro {
-    display: grid;
-    grid-template-columns: 1fr 350px;
-    gap: 30px;
-    align-items: end;
-    margin-bottom: 28px;
-}
-
-.eyebrow {
-    font-size: 10px;
-    color: #777;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.intro h1 {
-    margin-top: 13px;
-    font-size: clamp(30px, 4vw, 43px);
-    letter-spacing: -1.5px;
-}
-
-.intro p {
-    color: var(--muted);
-    margin-top: 12px;
-    line-height: 1.7;
-    max-width: 500px;
-    font-size: 13px;
-}
-
-.search-panel {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 9px;
-    padding: 10px;
-}
-
-.search-panel label {
-    display: block;
-    color: #888;
-    font-size: 10px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    padding: 5px 7px 10px;
-}
-
-.search-wrap {
-    display: flex;
-    align-items: center;
-    background: var(--soft);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 0 12px;
-}
-
-.search-wrap span {
-    font-size: 18px;
-    color: #777;
-}
-
-.search-wrap input {
-    width: 100%;
-    min-width: 0;
-    height: 42px;
-    padding-left: 10px;
-    border: none;
-    outline: none;
-    background: transparent;
-    font-size: 12px;
-    color: var(--text);
-}
-
-/* CATEGORY TABS */
-
-.tabs {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    padding: 10px;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 9px;
-    margin-bottom: 25px;
-    overflow-x: auto;
-}
-
-.tab {
-    border: 1px solid transparent;
-    background: transparent;
-    color: #777;
-    padding: 12px 17px;
-    font-size: 12px;
-    font-weight: 600;
-    border-radius: 6px;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: .2s;
-}
-
-.tab:hover {
-    background: #f3f3f3;
-    color: #222;
-}
-
-.tab.active {
-    background: var(--black);
-    color: white;
-}
-
-/* SECTION */
-
-.section {
-    margin-bottom: 28px;
-    scroll-margin-top: 20px;
-}
-
-.section-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 14px;
-}
-
-.section-title {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.section-number {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 35px;
-    height: 35px;
-    border-radius: 7px;
-    background: #dedede;
-    font-size: 11px;
-    font-weight: bold;
-}
-
-.section-title h2 {
-    font-size: 17px;
-}
-
-.section-desc {
-    margin-top: 4px;
-    color: #888;
-    font-size: 11px;
-}
-
-.section-count {
-    color: #888;
-    font-size: 11px;
-}
-
-/* RULE CARDS */
-
-.rules-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-}
-
-.rule {
-    display: flex;
-    gap: 14px;
-    padding: 20px;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 9px;
-    min-height: 125px;
-    transition: border-color .2s, transform .2s;
-}
-
-.rule:hover {
-    border-color: #b7b7b7;
-    transform: translateY(-2px);
-}
-
-.rule-number {
-    flex-shrink: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 37px;
-    height: 37px;
-    background: #f0f0f0;
-    border: 1px solid #e8e8e8;
-    border-radius: 7px;
-    font-size: 11px;
-    color: #555;
-    font-weight: bold;
-}
-
-.rule-content {
-    min-width: 0;
-}
-
-.rule h3 {
-    font-size: 13px;
-    margin: 2px 0 9px;
-    line-height: 1.5;
-}
-
-.rule p {
-    color: #777;
-    font-size: 12px;
-    line-height: 1.8;
-}
-
-.hidden {
-    display: none !important;
-}
-
-.empty {
-    display: none;
-    padding: 40px 20px;
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 9px;
-    text-align: center;
-    color: #777;
-}
-
-/* FOOTER */
-
-.footer {
-    margin-top: 45px;
-    background: var(--white);
-    border-top: 1px solid var(--border);
-}
-
-.footer-inner {
-    max-width: 1240px;
-    padding: 24px 28px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    color: #888;
-    font-size: 11px;
-}
-
-.footer-brand {
-    color: #222;
-    font-weight: 800;
-    letter-spacing: 1px;
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 800px) {
-    .header-inner {
-        padding: 0 18px;
-    }
-
-    .container {
-        padding: 0 16px;
-        margin-top: 24px;
-    }
-
-    .intro {
-        grid-template-columns: 1fr;
-        gap: 22px;
-    }
-
-    .intro h1 {
-        font-size: 32px;
-    }
-
-    .rules-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .tabs {
-        margin-bottom: 20px;
-    }
-
-    .footer-inner {
-        padding: 20px 16px;
-    }
-}
-
-@media (max-width: 450px) {
-    .header-right {
-        font-size: 9px;
-        gap: 7px;
-    }
-
-    .logo {
-        font-size: 18px;
-    }
-
-    .section-title h2 {
-        font-size: 15px;
-    }
-
-    .rule {
-        padding: 16px 13px;
-    }
-}
-
-:root {
-    --bg: #f4f4f4;
-    --white: #ffffff;
-    --text: #152238;
-    --muted: #707070;
-    --border: #e5e5e5;
-    --soft: #fafafa;
-    --black: #252525;
-    --accent: #454545;
-    --accent-light: #f0f0f0;
-}
-
-html {
-    scroll-padding-top: 24px;
-}
-
-body {
-    min-height: 100vh;
-    overflow-x: hidden;
-    background:
-        radial-gradient(ellipse at 8% 8%, rgba(115, 115, 115, .09), transparent 34rem),
-        radial-gradient(ellipse at 94% 28%, rgba(185, 185, 185, .12), transparent 30rem),
-        var(--bg);
-    color: var(--text);
-    font-family: Inter, "Segoe UI", Arial, sans-serif;
-}
-
-.header {
-    height: 76px;
-    background: rgba(255, 255, 255, .82);
-    border-bottom: 1px solid rgba(226, 226, 226, .9);
-    backdrop-filter: blur(16px);
-}
-
-.header-inner {
-    max-width: 1280px;
-}
-
-.logo {
-    letter-spacing: 1px;
-}
-
-.logo span {
-    color: var(--accent);
-}
-
-.header-right {
-    color: #626262;
-    font-weight: 700;
-    letter-spacing: 1.4px;
-}
-
-.status {
-    width: 9px;
-    height: 9px;
-    background: #747474;
-    box-shadow: 0 0 0 4px rgba(90, 90, 90, .12);
-    animation: status-pulse 2.4s ease-in-out infinite;
-}
-
-.container {
-    max-width: 1280px;
-    margin-top: 38px;
-    margin-bottom: 56px;
-    overflow-anchor: none;
-}
-
-.intro {
-    position: relative;
-    overflow: hidden;
-    align-items: center;
-    padding: clamp(26px, 5vw, 52px);
-    margin-bottom: 26px;
-    border: 1px solid rgba(255, 255, 255, .9);
-    border-radius: 24px;
-    background: linear-gradient(125deg, rgba(255, 255, 255, .98), rgba(244, 244, 244, .94));
-    box-shadow: 0 18px 55px rgba(25, 25, 25, .07);
-    animation: rise-in .7s cubic-bezier(.2, .75, .25, 1) both;
-}
-
-.intro::after {
-    position: absolute;
-    right: 25%;
-    bottom: -180px;
-    width: 330px;
-    height: 330px;
-    border: 1px solid rgba(70, 70, 70, .12);
-    border-radius: 50%;
-    box-shadow: 0 0 0 35px rgba(70, 70, 70, .035), 0 0 0 70px rgba(70, 70, 70, .025);
-    content: "";
-    pointer-events: none;
-    animation: orbit-drift 24s ease-in-out infinite alternate;
-}
-
-.eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--accent);
-    letter-spacing: 1.5px;
-}
-
-.eyebrow::before {
-    width: 18px;
-    height: 2px;
-    border-radius: 2px;
-    background: currentColor;
-    content: "";
-}
-
-.intro h1 {
-    position: relative;
-    z-index: 1;
-    margin-top: 16px;
-    font-size: clamp(34px, 5vw, 56px);
-    letter-spacing: -2px;
-    line-height: 1.08;
-}
-
-.intro p {
-    position: relative;
-    z-index: 1;
-    max-width: 540px;
-    margin-top: 16px;
-    color: #626262;
-    font-size: 15px;
-    line-height: 1.8;
-}
-
-.search-panel {
-    position: relative;
-    z-index: 1;
-    padding: 14px;
-    border: 1px solid rgba(226, 226, 226, .9);
-    border-radius: 16px;
-    box-shadow: 0 12px 30px rgba(25, 25, 25, .055);
-}
-
-.search-panel label {
-    color: #626262;
-    letter-spacing: 1.2px;
-}
-
-.search-wrap {
-    border-radius: 10px;
-    transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
-}
-
-.search-wrap:focus-within {
-    border-color: rgba(90, 90, 90, .5);
-    background: #fff;
-    box-shadow: 0 0 0 4px rgba(70, 70, 70, .09);
-}
-
-.search-wrap span {
-    transition: color .25s ease, transform .35s ease;
-}
-
-.search-wrap:focus-within span {
-    transform: rotate(-12deg) scale(1.12);
-    color: #333;
-}
-
-.search-wrap input {
-    font-size: 13px;
-}
-
-.tabs {
-    position: sticky;
-    top: 12px;
-    z-index: 5;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 145px), 1fr));
-    gap: 8px;
-    padding: 9px;
-    overflow: visible;
-    border-color: rgba(226, 226, 226, .9);
-    border-radius: 15px;
-    background: rgba(255, 255, 255, .88);
-    box-shadow: 0 10px 30px rgba(25, 25, 25, .07);
-    backdrop-filter: blur(14px);
-}
-
-.tabs .tab {
-    min-width: 0;
-    min-height: 42px;
-    white-space: normal;
-}
-
-.tabs::before {
-    content: none;
-}
-
-.tab {
-    padding: 12px 18px;
-    border-radius: 10px;
-    color: #666;
-    transition: color .22s ease, background .22s ease, transform .22s ease, box-shadow .22s ease;
-}
-
-.tab:hover {
-    transform: translateY(-1px);
-    background: var(--accent-light);
-    color: #222;
-}
-
-.tab.active {
-    background: linear-gradient(135deg, #292929, #626262);
-    box-shadow: 0 6px 16px rgba(35, 35, 35, .2);
-    color: white;
-}
-
-.tab:focus-visible {
-    outline: 3px solid rgba(80, 80, 80, .3);
-    outline-offset: 3px;
-}
-
-.section {
-    margin-bottom: 36px;
-    scroll-margin-top: 96px;
-}
-
-.section:not(.hidden) {
-    animation: rise-in .45s ease backwards;
-}
-
-.section-top {
-    margin-bottom: 16px;
-}
-
-.section-number {
-    width: 42px;
-    height: 42px;
-    border: 1px solid #e1e1e1;
-    border-radius: 12px;
-    background: linear-gradient(145deg, #ededed, #fafafa);
-    color: #444;
-    font-size: 12px;
-}
-
-.section-title h2 {
-    font-size: 19px;
-    letter-spacing: -.3px;
-}
-
-.section-desc {
-    color: #737373;
-    font-size: 12px;
-}
-
-.section-count {
-    padding: 7px 10px;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, .72);
-    color: #707070;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-.rules-grid {
-    gap: 14px;
-}
-
-.rule {
-    position: relative;
-    overflow: hidden;
-    min-height: 138px;
-    padding: 22px;
-    border: 1px solid rgba(226, 226, 226, .95);
-    border-radius: 15px;
-    box-shadow: 0 6px 20px rgba(25, 25, 25, .035);
-    animation: card-in .5s cubic-bezier(.2, .75, .25, 1) backwards;
-    transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
-}
-
-.rule::before {
-    position: absolute;
-    inset: 0 auto 0 0;
-    width: 3px;
-    background: linear-gradient(180deg, #555, #c4c4c4);
-    content: "";
-    opacity: 0;
-    transition: opacity .25s ease;
-}
-
-.rule::after {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, .6) 48%, transparent 66%);
-    content: "";
-    pointer-events: none;
-    transform: translateX(-130%);
-}
-
-.rule:hover {
-    transform: translateY(-4px);
-    border-color: #c9c9c9;
-    box-shadow: 0 14px 30px rgba(25, 25, 25, .09);
-}
-
-.rule:hover::before {
-    opacity: 1;
-}
-
-.rule:hover::after {
-    animation: card-sheen .8s ease;
-}
-
-.rule:nth-child(2) { animation-delay: .05s; }
-.rule:nth-child(3) { animation-delay: .1s; }
-.rule:nth-child(4) { animation-delay: .15s; }
-.rule:nth-child(5) { animation-delay: .2s; }
-.rule:nth-child(6) { animation-delay: .25s; }
-
-.rule-number {
-    width: 40px;
-    height: 40px;
-    border: 1px solid #e5e5e5;
-    border-radius: 11px;
-    background: #f4f4f4;
-    color: #4a4a4a;
-    font-size: 12px;
-}
-
-.rule h3 {
-    margin-top: 1px;
-    color: #252525;
-    font-size: 14px;
-}
-
-.rule p {
-    color: #6d6d6d;
-    font-size: 13px;
-    line-height: 1.75;
-}
-
-.rule .sanction {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 7px;
-    margin-top: 12px;
-    color: #4a4a4a;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: .55px;
-}
-
-.rule .sanction strong {
-    margin-right: 2px;
-    color: #555;
-}
-
-.sanction-type {
-    display: inline-flex;
-    align-items: center;
-    min-height: 24px;
-    padding: 4px 8px;
-    border: 1px solid transparent;
-    border-radius: 6px;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: .45px;
-    line-height: 1.2;
-}
-
-.sanction-type--kpp {
-    border-color: #dedede;
-    background: #ededed;
-    color: #555;
-}
-
-.sanction-type--fine {
-    border-color: #f1d49a;
-    background: #fff3d6;
-    color: #9a6500;
-}
-
-.sanction-type--ban {
-    border-color: #f0c2c2;
-    background: #fff0f0;
-    color: #b42323;
-}
-
-.sanction-type--pre-kpp {
-    border-color: #f0c88f;
-    background: #fff0d6;
-    color: #a45b08;
-}
-
-.sanction-type--warning {
-    border-color: #f0c88f;
-    background: #fff0d6;
-    color: #a45b08;
-}
-
-.sanction-type--neutral {
-    border-color: #dedede;
-    background: #ededed;
-    color: #555;
-}
-
-.rule-group {
-    margin: 0;
-}
-
-.empty {
-    padding: 44px 20px;
-    border-radius: 16px;
-    color: #666;
-    box-shadow: 0 10px 30px rgba(25, 25, 25, .045);
-    animation: rise-in .3s ease both;
-}
-
-.footer {
-    margin-top: 56px;
-    border-top: 1px solid rgba(226, 226, 226, .9);
-    background: rgba(255, 255, 255, .76);
-}
-
-.footer-inner {
-    max-width: 1280px;
-    padding-top: 28px;
-    padding-bottom: 28px;
-    color: #707070;
-}
-
-.footer-brand {
-    color: #292929;
-}
-
-@keyframes rise-in {
-    from { opacity: 0; transform: translateY(14px); }
-    to { opacity: 1; transform: none; }
-}
-
-@keyframes card-in {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: none; }
-}
-
-@keyframes status-pulse {
-    50% { box-shadow: 0 0 0 7px rgba(90, 90, 90, .06); }
-}
-
-@keyframes orbit-drift {
-    from { transform: translate3d(0, 0, 0) rotate(0deg); }
-    to { transform: translate3d(18px, -10px, 0) rotate(12deg); }
-}
-
-@keyframes card-sheen {
-    to { transform: translateX(130%); }
-}
-
-@media (max-width: 800px) {
-    .intro {
-        padding: 28px;
-        border-radius: 20px;
-    }
-
-    .tabs {
-        top: 8px;
-    }
-}
-
-@media (max-width: 520px) {
-    .container {
-        margin-top: 20px;
-    }
-
-    .intro {
-        padding: 23px 19px;
-    }
-
-    .intro h1 {
-        font-size: 35px;
-        letter-spacing: -1.2px;
-    }
-
-    .intro p {
-        font-size: 14px;
-    }
-
-    .tabs {
-        gap: 5px;
-        padding: 7px;
-    }
-
-    .tab {
-        padding: 10px 13px;
-        font-size: 11px;
-    }
-
-    .rule {
-        min-height: 0;
-        padding: 18px 15px;
-    }
-
-    .section-count {
-        display: none;
-    }
-
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<header class="header">
-    <div class="header-inner">
-        <div class="logo">ODESA<span>RP</span></div>
-        <div class="header-right">
-            <span class="status"></span>
-            <span>ПРАВИЛА СПІЛЬНОТИ</span>
-        </div>
-    </div>
-</header>
-
-<main class="container">
-
-    <section class="intro">
-        <div>
-            <div class="eyebrow">ODESARP / ПРАВИЛА СПІЛЬНОТИ</div>
-            <h1>Правила спільноти</h1>
-            <p>
-                Єдиний звід правил OdesaRP.
-                Тут зібрані вимоги до ігрового процесу,
-                взаємодії між гравцями та роботи адміністрації.
-            </p>
-        </div>
-
-        <div class="search-panel">
-            <label for="search">ПОШУК ЗА ПРАВИЛАМИ</label>
-            <div class="search-wrap">
-                <span>⌕</span>
-                <input id="search" type="text"
-                       placeholder="Введіть назву або текст правила...">
-            </div>
-        </div>
-    </section>
-
-    <nav class="tabs">
-        <button class="tab active" data-article="1">Правила дорожнього руху</button>
-        <button class="tab" data-article="2">Правопорушення щодо правоохоронних органів</button>
-        <button class="tab" data-article="3">Загальні порушення</button>
-        <button class="tab" data-article="4">Судова система</button>
-        <button class="tab" data-article="5">Пограбування та втеча з в’язниці</button>
-        <button class="tab" data-article="6">Порушення у зеленій зоні</button>
-        <button class="tab" data-article="7">Порушення на приватній території</button>
-    </nav>
-
-    <section class="section" id="general">
-        <div class="section-top">
-            <div class="section-title">
-                <div class="section-number">01</div>
-                <div>
-                    <h2>Загальні правила</h2>
-                    <div class="section-desc">Основні вимоги проєкту</div>
-                </div>
-            </div>
-            <span class="section-count">ЗАГАЛЬНІ</span>
-        </div>
-
-        <div class="rules-grid">
-            <article class="rule">
-                <div class="rule-number">1.1</div>
-                <div class="rule-content">
-                    <h3>Дотримання правил</h3>
-                    <p>Кожен учасник має дотримуватися правил OdesaRP і вимог адміністрації.</p>
-                    <div class="sanction"><strong>ПОКАРАННЯ:</strong><span class="sanction-type sanction-type--pre-kpp">ПРЕД КПЗ</span><span class="sanction-type sanction-type--kpp">КПЗ до 30 хв</span></div>
-                </div>
-            </article>
-
-            <article class="rule">
-                <div class="rule-number">1.2</div>
-                <div class="rule-content">
-                    <h3>Повага до учасників</h3>
-                    <p>Заборонені цькування, погрози та образи інших гравців.</p>
-                    <div class="sanction"><strong>ПОКАРАННЯ:</strong><span class="sanction-type sanction-type--kpp">КПЗ 30–120 хв</span><span class="sanction-type sanction-type--ban">БАН до 3 днів</span></div>
-                </div>
-            </article>
-
-            <article class="rule">
-                <div class="rule-number">1.3</div>
-                <div class="rule-content">
-                    <h3>Чесна гра</h3>
-                    <p>Заборонено використовувати чити, експлойти та сторонні програми для отримання переваги.</p>
-                    <div class="sanction"><strong>ПОКАРАННЯ:</strong><span class="sanction-type sanction-type--ban">БАН 7–30 днів</span></div>
-                </div>
-            </article>
-
-            <article class="rule">
-                <div class="rule-number">1.4</div>
-                <div class="rule-content">
-                    <h3>Використання помилок гри</h3>
-                    <p>Заборонено навмисно використовувати помилки гри для отримання переваги.</p>
-                    <div class="sanction"><strong>ПОКАРАННЯ:</strong><span class="sanction-type sanction-type--pre-kpp">ПРЕД КПЗ</span><span class="sanction-type sanction-type--ban">БАН до 7 днів</span></div>
-                </div>
-            </article>
-        </div>
-    </section>
-
-    <section class="section" id="rp">
-        <div class="section-top">
-            <div class="section-title">
-                <div class="section-number">02</div>
-                <div>
-                    <h2>RP-правила</h2>
-                    <div class="section-desc">Правила рольової взаємодії</div>
-                </div>
-            </div>
-            <span class="section-count">РОЛЬОВА ГРА</span>
-        </div>
-
-        <div class="rules-grid">
-            <article class="rule">
-                <div class="rule-number">2.1</div>
-                <div class="rule-content">
-                    <h3>Метагеймінг (MG)</h3>
-                    <p>Використання інформації, отриманої поза грою, у рольових ситуаціях.</p>
-                    <div class="sanction"><strong>ПОКАРАННЯ:</strong><span class="sanction-type sanction-type--pre-kpp">ПРЕД КПЗ</span><span class="sanction-type sanction-type--kpp">КПЗ до 30 хв</span></div>
-                </div>
-            </article>
-
-            <article class="rule">
-                <div class="rule-number">2.2</div>
-                <div class="rule-content">
-                    <h3>Павергеймінг (PG)</h3>
-                    <p>Нереалістичні дії персонажа або нав’язування результату дій іншому гравцеві.</p>
-                    <div class="sanction"><strong>ПОКАРАННЯ:</strong><span class="sanction-type sanction-type--pre-kpp">ПРЕД КПЗ</span><span class="sanction-type sanction-type--kpp">КПЗ</span></div>
-                </div>
-            </article>
-
-            <article class="rule">
-                <div class="rule-number">2.3</div>
-                <div class="rule-content">
-                    <h3>Дезматч (DM)</h3>
-                    <p>Напад на гравця без достатньої рольової причини.</p>
-                    <div class="sanction"><strong>ПОКАРАННЯ:</strong><span class="sanction-type sanction-type--kpp">КПЗ</span><span class="sanction-type sanction-type--ban">БАН 1–3 дні</span></div>
-                </div>
-            </article>
-
-            <article class="rule">
-                <div class="rule-number">2.4</div>
-                <div class="rule-content">
-                    <h3>Комбат-логінг</h3>
-                    <p>Вихід із гри під час активної RP-ситуації, щоб уникнути наслідків.</p>
-                    <div class="sanction"><strong>ПОКАРАННЯ:</strong><span class="sanction-type sanction-type--ban">БАН 1–3 дні</span></div>
-                </div>
-            </article>
-
-            <article class="rule">
-                <div class="rule-number">2.5</div>
-                <div class="rule-content">
-                    <h3>NonRP</h3>
-                    <p>Дії, що суперечать логіці рольового процесу та можливостям персонажа.</p>
-                    <div class="sanction"><strong>ПОКАРАННЯ:</strong><span class="sanction-type sanction-type--pre-kpp">ПРЕД КПЗ</span><span class="sanction-type sanction-type--kpp">КПЗ</span></div>
-                </div>
-            </article>
-
-            <article class="rule">
-                <div class="rule-number">2.6</div>
-                <div class="rule-content">
-                    <h3>Випадковий дезматч (RDM)</h3>
-                    <p>Напад або вбивство без відповідної рольової причини.</p>
-                    <div class="sanction"><strong>ПОКАРАННЯ:</strong><span class="sanction-type sanction-type--ban">БАН 2–5 днів</span></div>
-                </div>
-            </article>
-        </div>
-    </section>
-
-    <section class="section" id="traffic">
-        <div class="section-top">
-            <div class="section-title">
-                <div class="section-number">03</div>
-                <div>
-                    <h2>Правила транспорту</h2>
-                    <div class="section-desc">Поведінка на дорогах</div>
-                </div>
-            </div>
-            <span class="section-count">ДОРОЖНІЙ РУХ</span>
-        </div>
-
-        <div class="rules-grid">
-            <article class="rule">
-                <div class="rule-number">3.1</div>
-                <div class="rule-content">
-                    <h3>Дотримання правил дорожнього руху</h3>
-                    <p>Водії мають дотримуватися правил дорожнього руху під час гри.</p>
-                    <div class="sanction"><strong>ПОКАРАННЯ:</strong><span class="sanction-type sanction-type--fine">ШТРАФ</span><span class="sanction-type sanction-type--pre-kpp">ПРЕД КПЗ</span></div>
-                </div>
-            </article>
-
-            <article class="rule">
-                <div class="rule-number">3.2</div>
-                <div class="rule-content">
-                    <h3>Небезпечне водіння</h3>
-                    <p>Заборонено навмисно створювати аварійні ситуації без відповідної RP-причини.</p>
-                    <div class="sanction"><strong>ПОКАРАННЯ:</strong><span class="sanction-type sanction-type--fine">ШТРАФ</span><span class="sanction-type sanction-type--kpp">КПЗ до 1 год</span></div>
-                </div>
-            </article>
-
-            <article class="rule">
-                <div class="rule-number">3.3</div>
-                <div class="rule-content">
-                    <h3>Спеціальні сигнали</h3>
-                    <p>Заборонено без потреби використовувати спеціальні світлові та звукові сигнали.</p>
-                    <div class="sanction"><strong>ПОКАРАННЯ:</strong><span class="sanction-type sanction-type--fine">ШТРАФ</span><span class="sanction-type sanction-type--pre-kpp">ПРЕД КПЗ</span></div>
-                </div>
-            </article>
-
-            <article class="rule">
-                <div class="rule-number">3.4</div>
-                <div class="rule-content">
-                    <h3>Створення перешкод</h3>
-                    <p>Заборонено навмисно блокувати рух і заважати іншим учасникам дорожнього руху без RP-причини.</p>
-                    <div class="sanction"><strong>ПОКАРАННЯ:</strong><span class="sanction-type sanction-type--kpp">КПЗ</span><span class="sanction-type sanction-type--ban">БАН до 1 дня</span></div>
-                </div>
-            </article>
-        </div>
-    </section>
-
-    <section class="section" id="admin">
-        <div class="section-top">
-            <div class="section-title">
-                <div class="section-number">04</div>
-                <div>
-                    <h2>Адміністрація</h2>
-                    <div class="section-desc">Звернення та відповідальність</div>
-                </div>
-            </div>
-            <span class="section-count">КОМАНДА</span>
-        </div>
-
-        <div class="rules-grid">
-            <article class="rule">
-                <div class="rule-number">4.1</div>
-                <div class="rule-content">
-                    <h3>Введення адміністрації в оману</h3>
-                    <p>Заборонено навмисно надавати неправдиву інформацію під час розгляду скарг.</p>
-                    <div class="sanction"><strong>ПОКАРАННЯ:</strong><span class="sanction-type sanction-type--kpp">КПЗ</span><span class="sanction-type sanction-type--ban">БАН 1–3 дні</span></div>
-                </div>
-            </article>
-
-            <article class="rule">
-                <div class="rule-number">4.2</div>
-                <div class="rule-content">
-                    <h3>Видавання себе за адміністратора</h3>
-                    <p>Заборонено видавати себе за представника адміністрації без відповідних повноважень.</p>
-                    <div class="sanction"><strong>ПОКАРАННЯ:</strong><span class="sanction-type sanction-type--ban">БАН 3–7 днів</span></div>
-                </div>
-            </article>
-
-            <article class="rule">
-                <div class="rule-number">4.3</div>
-                <div class="rule-content">
-                    <h3>Покарання</h3>
-                    <p>Покарання обирається адміністрацією залежно від тяжкості та повторності порушення.</p>
-                    <div class="sanction"><strong>ПОКАРАННЯ:</strong><span class="sanction-type sanction-type--pre-kpp">ПРЕД КПЗ</span><span class="sanction-type sanction-type--kpp">КПЗ</span><span class="sanction-type sanction-type--ban">БАН</span></div>
-                </div>
-            </article>
-
-            <article class="rule">
-                <div class="rule-number">4.4</div>
-                <div class="rule-content">
-                    <h3>Подання скарг</h3>
-                    <p>Скарги мають містити достовірну інформацію та необхідні докази.</p>
-                    <div class="sanction"><strong>ПОКАРАННЯ:</strong><span class="sanction-type sanction-type--pre-kpp">ПРЕД КПЗ</span><span class="sanction-type sanction-type--kpp">КПЗ до 1 год</span></div>
-                </div>
-            </article>
-        </div>
-    </section>
-
-    <div class="empty" id="empty">
-        За вашим запитом нічого не знайдено.
-    </div>
-
-</main>
-
-<footer class="footer">
-    <div class="footer-inner">
-        <span class="footer-brand">ODESARP</span>
-        <span>Правила ігрової спільноти · 2026</span>
-    </div>
-</footer>
-
-<script>
-const search = document.getElementById("search");
-const sections = [...document.querySelectorAll(".section")];
-const tabs = [...document.querySelectorAll(".tab")];
-const empty = document.getElementById("empty");
-let selectedCategory = null;
-let categoryTransition = 0;
-let isSwitchingCategory = false;
-const activeCategoryAnimations = new Set();
-let selectedArticle = "1";
-const categoryByArticle = {
-    1: "traffic",
-    2: "admin",
-    3: "general",
-    4: "admin",
-    5: "rp",
-    6: "rp",
-    7: "general",
-};
-
-const additionalRuleGroups = [
-    {
-        title: "СТАТТЯ 1. ПРАВИЛА ДОРОЖНЬОГО РУХУ",
-        rules: [
-            ["1", "Перевищення швидкості.", [["fine", "ШТРАФ 4 000"]]],
-            ["1.1", "Переїзд через закритий шлагбаум.", [["fine", "ШТРАФ 5 000"]]],
-            ["1.2", "Розворот у забороненому місці.", [["fine", "ШТРАФ 4 000 $"]]],
-            ["1.3", "Небезпечне водіння.", [["fine", "ШТРАФ 3 000 $"]]],
-            ["1.4", "Навмисне створення затору на дорозі.", [["fine", "ШТРАФ 2 000 $"]]],
-            ["1.5", "Залишення місця дорожньо-транспортної пригоди.", [["kpp", "КПЗ 15 хв"]]],
-            ["1.6", "Керування транспортом у нетверезому стані.", [["kpp", "КПЗ 10 хв"], ["neutral", "АБО"], ["fine", "ШТРАФ 8 000"]]],
-            ["1.7", "Їзда без фар у нічний час.", [["fine", "ШТРАФ 3 000 $"]]],
-            ["1.8", "Ігнорування службового транспорту з увімкненими проблисковими маячками.", [["fine", "ШТРАФ 8 000 $"]]]
-        ]
-    },
-    {
-        title: "СТАТТЯ 2. ПРАВОПОРУШЕННЯ ЩОДО ПРАВООХОРОННИХ ОРГАНІВ",
-        rules: [
-            ["2.1", "Ігнорування законної вимоги працівника поліції зупинитися або початок переслідування.", [["kpp", "КПЗ 10 хв"]]],
-            ["2.2", "Навмисна втеча від поліції під час переслідування.", [["kpp", "КПЗ 15 хв"]]],
-            ["2.3", "Опір під час затримання.", [["fine", "ШТРАФ 5 000"]]],
-            ["2.4", "Погроза працівникові правоохоронних органів.", [["fine", "ШТРАФ 5 000"]]],
-            ["2.5", "Напад на працівника поліції (понад два удари).", [["kpp", "КПЗ 15 хв"]]],
-            ["2.6", "Убивство працівника поліції або завдання йому тяжких поранень.", [["kpp", "КПЗ 30 хв"]]],
-            ["2.7", "Хибний виклик.", [["fine", "ШТРАФ 2 500 $"]]],
-            ["2.10", "Посадка в транспорт сторонньої особи під час переслідування, щоб утекти від поліції через випадкових гравців.", [["ban", "БАН 1 день обом сторонам"]]],
-            ["2.11", "Допомога у втечі під час переслідування.", [["kpp", "КПЗ 20 хв"], ["neutral", "АБО"], ["ban", "БАН 1 день"]]],
-            ["2.12", "Передавання зброї злочинцю.", [["kpp", "КПЗ 7 хв"]]],
-            ["2.13", "Пропозиція або надання хабаря.", [["kpp", "КПЗ 10 хв"]]],
-            ["2.14", "Одержання хабаря.", [["neutral", "ПОНИЖЕННЯ НА ПОСАДІ"], ["warning", "1 ДОГАНА"]]],
-            ["2.15", "Провокація поліції.", [["fine", "ШТРАФ 7 000 $"]]],
-            ["2.16", "Перешкоджання роботі працівників поліції під час виконання обов’язків.", [["warning", "ПОПЕРЕДЖЕННЯ"], ["ban", "БАН у разі повторного порушення"]]],
-            ["2.17", "Непокора наказу правоохоронних органів під час виконання обов’язків.", [["ban", "БАН"], ["neutral", "АБО"], ["kpp", "КПЗ 20 хв"]]],
-            ["2.18", "Образа працівника поліції під час виконання обов’язків.", [["fine", "ШТРАФ 5 000 €"], ["neutral", "АБО"], ["kpp", "КПЗ 15 хв"], ["neutral", "АБО"], ["ban", "БАН"]]],
-            ["2.19", "Зміна транспортного засобу під час переслідування.", [["fine", "ШТРАФ 10 000"], ["neutral", "АБО"], ["ban", "БАН 1 день"]]]
-        ]
-    },
-    {
-        title: "СТАТТЯ 3. ЗАГАЛЬНІ ПРАВОПОРУШЕННЯ",
-        rules: [
-            ["3.1", "Образа родичів.", [["ban", "БАН 3 дні"]]],
-            ["3.2", "Убивство громадянина.", [["kpp", "КПЗ 25 хв"]]],
-            ["3.3", "Викрадення людини без виконання всіх трьох умов: викликати перемовника, повідомити вимоги та відіграти RP-сцену.", [["ban", "БАН 1 день"]]],
-            ["3.4", "Шантаж.", [["ban", "БАН 1 день"]]],
-            ["3.5", "Спам або реклама.", [["ban", "ПЕРМАНЕНТНИЙ БАН"]]]
-        ]
-    },
-    {
-        title: "СТАТТЯ 4. СУДОВА СИСТЕМА",
-        rules: [
-            ["4.1", "Тиск судді, адвоката або прокурора на цивільних.", [["fine", "ШТРАФ 4 500 $"]]],
-            ["4.2", "Підвищений тон судді.", [["fine", "ШТРАФ 8 000"], ["neutral", "АБО"], ["neutral", "ЗВІЛЬНЕННЯ З ПОСАДИ"]]],
-            ["4.3", "Неадекватна поведінка або перебивання в суді.", [["fine", "ШТРАФ 2 500 €"], ["kpp", "КПЗ 10 хв"]]],
-            ["4.5", "Бійка або напад у залі суду.", [["ban", "БАН 1–2 дні"], ["neutral", "АБО"], ["ban", "ПЕРМАНЕНТНИЙ БАН"]]],
-            ["4.6", "Ігнорування рішення суду або зауважень охорони.", [["ban", "БАН 1 день"]]],
-            ["4.7", "Перебування сторонніх осіб у залі суду.", [["warning", "ПОПЕРЕДЖЕННЯ за перше порушення"], ["fine", "ШТРАФ 4 000 за друге порушення"], ["ban", "БАН 1 день за третє порушення"]]]
-        ]
-    },
-    {
-        title: "СТАТТЯ 5. ПОГРАБУВАННЯ ТА ВТЕЧА З В’ЯЗНИЦІ",
-        rules: [
-            ["5.1", "Пограбування магазину, заправки або торговельного автомата.", [["kpp", "КПЗ 10 хв"]]],
-            ["5.2", "Пограбування банку, ювелірного магазину, контейнера або сейфа.", [["kpp", "КПЗ 15 хв"]]]
-        ]
-    },
-    {
-        title: "СТАТТЯ 6. ПОРУШЕННЯ У ЗЕЛЕНІЙ ЗОНІ",
-        rules: [
-            ["6.1", "Стрілянина у зеленій зоні.", [["ban", "БАН 5 днів"]]],
-            ["6.2", "Напад із холодною зброєю у зеленій зоні.", [["ban", "БАН 5 днів"]]],
-            ["6.3", "Перебування зі зброєю у зеленій зоні.", [["fine", "ШТРАФ 7 000"], ["neutral", "АБО"], ["kpp", "КПЗ 5 хв"]]],
-            ["6.4", "Бійка у зеленій зоні.", [["ban", "БАН 1 день"]]]
-        ]
-    },
-    {
-        title: "СТАТТЯ 7. ПОРУШЕННЯ НА ПРИВАТНІЙ ТЕРИТОРІЇ",
-        rules: [
-            ["7.1", "Відмова залишити приватну територію після вимоги власника.", [["ban", "БАН 1 день"]]],
-            ["7.2", "Привласнення території без згоди адміністрації та без її придбання.", [["ban", "БАН 1 день"]]],
-            ["7.3", "Убивство власника будинку, перебуваючи на його території.", [["ban", "БАН 2 дні"]]],
-            ["7.4", "Убивство гравця в AFK незалежно від місця.", [["ban", "БАН 2 дні"]]],
-            ["7.5", "Провокування гравця вийти з території, щоб убити його.", [["ban", "БАН 2 дні"]]]
-        ]
-    },
-];
-
-function renderAdditionalRules() {
-    const categoryContainers = new Map();
-
-    additionalRuleGroups.forEach(group => {
-        const articleNumber = Number(group.title.match(/^СТАТТЯ\s+(\d+)/i)?.[1]);
-        const articleId = String(articleNumber);
-        const categoryId = categoryByArticle[articleNumber];
-        const categorySection = document.getElementById(categoryId);
-        const existingRules = categorySection?.querySelector(".rules-grid");
-        if (!categorySection || !existingRules) return;
-
-        existingRules.classList.add("hidden");
-        categorySection.querySelector(".section-top")?.classList.add("hidden");
-
-        let container = categoryContainers.get(categorySection.id);
-        if (!container) {
-            container = document.createElement("div");
-            container.className = "category-articles";
-            existingRules.after(container);
-            categoryContainers.set(categorySection.id, container);
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050806">
+    <title>Chernihiw RP — залетайте</title>
+    <style>
+        @font-face {
+            font-family: "Unbounded";
+            src: url("LogoSCUnboundedSans-Regular.ttf") format("truetype");
+            font-weight: 400;
+            font-display: swap;
         }
 
-        const groupElement = document.createElement("div");
-        groupElement.className = "rule-group";
-        groupElement.dataset.article = articleId;
+        :root {
+            color-scheme: dark;
+            --green: #67ff9a;
+            --bright-green: #b1ffc8;
+            --muted-green: #8eb89b;
+        }
 
-        const grid = document.createElement("div");
-        grid.className = "rules-grid";
+        * {
+            box-sizing: border-box;
+        }
 
-        group.rules.forEach(([number, description, sanctions]) => {
-            const rule = document.createElement("article");
-            rule.className = "rule";
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            overflow-x: hidden;
+            padding: 32px 18px;
+            background:
+                radial-gradient(ellipse at 50% 45%, rgba(32, 132, 67, .17), transparent 48%),
+                radial-gradient(circle, rgba(160, 255, 190, .17) .7px, transparent .9px) 0 0 / 13px 13px,
+                #050806;
+            color: #f0fff4;
+            font-family: "Unbounded", "Arial", sans-serif;
+        }
 
-            const ruleNumber = document.createElement("div");
-            ruleNumber.className = "rule-number";
-            ruleNumber.textContent = number;
+        body::before,
+        body::after {
+            position: fixed;
+            z-index: -1;
+            content: "";
+            pointer-events: none;
+        }
 
-            const content = document.createElement("div");
-            content.className = "rule-content";
+        body::before {
+            inset: 0;
+            background:
+                linear-gradient(90deg, transparent 49.9%, rgba(103, 255, 154, .035) 50%, transparent 50.1%),
+                linear-gradient(0deg, transparent 49.9%, rgba(103, 255, 154, .025) 50%, transparent 50.1%);
+            background-size: 58px 58px;
+            mask-image: radial-gradient(ellipse at center, #000 10%, transparent 78%);
+        }
 
-            const text = document.createElement("p");
-            text.textContent = description;
+        body::after {
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 35%, rgba(0, 0, 0, .68) 100%);
+        }
 
-            const sanctionList = document.createElement("div");
-            sanctionList.className = "sanction";
-            const label = document.createElement("strong");
-            label.textContent = "ПОКАРАННЯ:";
-            sanctionList.append(label);
+        .banner {
+            position: relative;
+            width: min(100%, 760px);
+            padding: clamp(32px, 7vw, 72px) clamp(22px, 7vw, 68px);
+            overflow: hidden;
+            border: 1px solid rgba(103, 255, 154, .32);
+            border-radius: 24px;
+            background:
+                linear-gradient(145deg, rgba(14, 30, 19, .94), rgba(5, 11, 7, .97) 62%),
+                #080d09;
+            box-shadow:
+                0 0 0 1px rgba(103, 255, 154, .06) inset,
+                0 0 45px rgba(40, 255, 112, .11),
+                0 28px 90px rgba(0, 0, 0, .58);
+            text-align: center;
+        }
 
-            sanctions.forEach(([type, value]) => {
-                const badge = document.createElement("span");
-                badge.className = `sanction-type sanction-type--${type}`;
-                badge.textContent = value;
-                sanctionList.append(badge);
-            });
+        .banner::before {
+            position: absolute;
+            inset: 0 16% auto;
+            height: 1px;
+            content: "";
+            background: linear-gradient(90deg, transparent, var(--green), transparent);
+            box-shadow: 0 0 20px rgba(103, 255, 154, .8);
+        }
 
-            content.append(text, sanctionList);
-            rule.append(ruleNumber, content);
-            grid.append(rule);
-        });
+        .eyebrow {
+            margin: 0 0 28px;
+            color: var(--green);
+            font: 700 11px/1.5 Arial, sans-serif;
+            letter-spacing: .34em;
+            text-transform: uppercase;
+            text-shadow: 0 0 14px rgba(103, 255, 154, .6);
+        }
 
-        groupElement.append(grid);
-        container.append(groupElement);
-    });
-}
+        h1 {
+            margin: 0;
+            color: var(--bright-green);
+            font-size: clamp(29px, 7vw, 62px);
+            font-weight: 400;
+            line-height: 1.18;
+            letter-spacing: -.055em;
+            text-shadow:
+                0 0 12px rgba(103, 255, 154, .56),
+                0 0 38px rgba(45, 255, 109, .26);
+        }
 
-renderAdditionalRules();
+        .invite {
+            margin: 22px 0 0;
+            color: #d7e9dc;
+            font: 700 clamp(12px, 2.4vw, 16px)/1.5 Arial, sans-serif;
+            letter-spacing: .28em;
+        }
 
-function filterRules() {
-    const query = search.value.toLowerCase().trim();
-    let total = 0;
-    const activeSectionId = categoryByArticle[selectedArticle];
+        .server-name {
+            margin: 9px 0 0;
+            color: var(--green);
+            font-size: clamp(25px, 6.4vw, 51px);
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: .04em;
+            overflow-wrap: anywhere;
+            text-shadow:
+                0 0 10px rgba(103, 255, 154, .66),
+                0 0 32px rgba(45, 255, 109, .42);
+        }
 
-    sections.forEach(section => {
-        const matchesCategory = section.id === activeSectionId;
-        let visible = 0;
+        .server-subtitle {
+            margin: 8px 0 0;
+            color: var(--muted-green);
+            font: 500 12px/1.5 Arial, sans-serif;
+            letter-spacing: .3em;
+        }
 
-        section.querySelectorAll(".rule").forEach(rule => {
-            const group = rule.closest(".rule-group");
-            const match = matchesCategory
-                && group?.dataset.article === selectedArticle
-                && rule.textContent.toLowerCase().includes(query);
+        .join-button {
+            display: inline-flex;
+            min-height: 54px;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 36px;
+            padding: 0 30px;
+            border: 1px solid var(--green);
+            border-radius: 8px;
+            background: var(--green);
+            box-shadow: 0 0 22px rgba(67, 255, 128, .28);
+            color: #07120a;
+            font: 800 13px/1 Arial, sans-serif;
+            letter-spacing: .15em;
+            text-decoration: none;
+            transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+        }
 
-            rule.classList.toggle("hidden", !match);
+        .join-button:hover {
+            transform: translateY(-2px);
+            background: #9dffb8;
+            box-shadow: 0 0 34px rgba(67, 255, 128, .48);
+        }
 
-            if (match) {
-                visible++;
-                total++;
+        .join-button:focus-visible,
+        .copy-button:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 4px;
+        }
+
+        .join-arrow {
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        .code-block {
+            margin: 34px auto 0;
+            padding-top: 24px;
+            border-top: 1px solid rgba(103, 255, 154, .17);
+        }
+
+        .code-label {
+            margin: 0 0 13px;
+            color: var(--muted-green);
+            font: 700 10px/1.5 Arial, sans-serif;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+        }
+
+        .code-row {
+            display: flex;
+            width: min(100%, 390px);
+            min-height: 54px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin: 0 auto;
+            padding: 7px 8px 7px 19px;
+            border: 1px solid rgba(103, 255, 154, .24);
+            border-radius: 9px;
+            background: rgba(0, 0, 0, .35);
+            color: inherit;
+            cursor: pointer;
+            font: inherit;
+            text-align: left;
+            transition: border-color .2s ease, background .2s ease;
+        }
+
+        .code-row:hover {
+            border-color: rgba(103, 255, 154, .6);
+            background: rgba(103, 255, 154, .05);
+        }
+
+        .server-code {
+            color: var(--bright-green);
+            font: 700 17px/1.2 "Consolas", "Courier New", monospace;
+            letter-spacing: .12em;
+            text-shadow: 0 0 12px rgba(103, 255, 154, .42);
+        }
+
+        .copy-button {
+            display: inline-flex;
+            min-height: 38px;
+            align-items: center;
+            justify-content: center;
+            padding: 0 13px;
+            border: 1px solid rgba(103, 255, 154, .43);
+            border-radius: 6px;
+            background: rgba(103, 255, 154, .09);
+            color: var(--bright-green);
+            font: 700 10px/1 Arial, sans-serif;
+            letter-spacing: .08em;
+            transition: background .2s ease, border-color .2s ease;
+        }
+
+        .code-row:hover .copy-button {
+            border-color: var(--green);
+            background: rgba(103, 255, 154, .18);
+        }
+
+        .copy-status {
+            min-height: 18px;
+            margin: 10px 0 0;
+            color: var(--green);
+            font: 12px/1.5 Arial, sans-serif;
+        }
+
+        @media (max-width: 480px) {
+            .banner {
+                border-radius: 18px;
+            }
+
+            .eyebrow {
+                margin-bottom: 22px;
+                letter-spacing: .2em;
+            }
+
+            .join-button {
+                width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="banner">
+        <p class="eyebrow">Чернигов приглашает</p>
+        <h1>ОНУКС ОКУНЬ<br>ЕБУЧИЙ</h1>
+        <p class="invite">ЗАЛЕТАЙТЕ НА</p>
+        <p class="server-name">CHERNIHIWRP</p>
+        <p class="server-subtitle">ЧЕРНИГОВ RP</p>
+
+        <a
+            class="join-button"
+            href="https://t.me/ChernihiwRP"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            ЗАЙТИ В ГРУППУ <span class="join-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <section class="code-block" aria-labelledby="code-label">
+            <h2 class="code-label" id="code-label">Код Чернигова</h2>
+            <button class="code-row" id="copy-code" type="button" aria-label="Скопировать код Чернигова">
+                <code class="server-code" id="server-code">3vs3sqqq</code>
+                <span class="copy-button" aria-hidden="true">КОПИРОВАТЬ</span>
+            </button>
+            <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+        </section>
+    </main>
+
+    <script>
+        const copyButton = document.getElementById("copy-code");
+        const code = document.getElementById("server-code").textContent;
+        const status = document.getElementById("copy-status");
+
+        copyButton.addEventListener("click", async () => {
+            try {
+                await navigator.clipboard.writeText(code);
+                status.textContent = "Код скопирован";
+            } catch {
+                const temporaryInput = document.createElement("textarea");
+                temporaryInput.value = code;
+                temporaryInput.setAttribute("readonly", "");
+                temporaryInput.style.position = "fixed";
+                temporaryInput.style.opacity = "0";
+                document.body.appendChild(temporaryInput);
+                temporaryInput.select();
+
+                const copied = document.execCommand("copy");
+                temporaryInput.remove();
+                status.textContent = copied
+                    ? "Код скопирован"
+                    : "Не удалось скопировать — выделите код вручную";
             }
         });
-
-        section.classList.toggle("hidden", !matchesCategory || visible === 0);
-
-        section.querySelectorAll(".rule-group").forEach(group => {
-            const selected = group.dataset.article === selectedArticle;
-            group.classList.toggle("hidden", !selected);
-        });
-    });
-
-    empty.style.display = total === 0 ? "block" : "none";
-}
-
-search.addEventListener("input", filterRules);
-filterRules();
-
-tabs.forEach(tab => {
-    tab.addEventListener("click", async () => {
-        const articleNumber = tab.dataset.article;
-        if (articleNumber) {
-            if (!document.querySelector(`.rule-group[data-article="${articleNumber}"]`)) return;
-
-            tabs.forEach(item => item.classList.remove("active"));
-            tab.classList.add("active");
-            selectedArticle = articleNumber;
-            search.value = "";
-
-            filterRules();
-            return;
-        }
-
-        const targetSection = document.getElementById(tab.dataset.target);
-        if (!targetSection) return;
-
-        const transition = ++categoryTransition;
-        activeCategoryAnimations.forEach(animation => animation.cancel());
-        activeCategoryAnimations.clear();
-        sections.forEach(section => {
-            section.style.willChange = "";
-        });
-
-        const wasTargetVisible = !targetSection.classList.contains("hidden");
-        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        const currentTab = tabs.find(item => item.classList.contains("active"));
-        const currentIndex = sections.findIndex(section =>
-            section.id === (selectedCategory || currentTab?.dataset.target)
-        );
-        const targetIndex = sections.indexOf(targetSection);
-        const direction = targetIndex >= currentIndex ? 1 : -1;
-        const outgoingSections = sections.filter(section =>
-            !section.classList.contains("hidden") && section !== targetSection
-        );
-
-        isSwitchingCategory = true;
-        tabs.forEach(item => item.classList.remove("active"));
-        tab.classList.add("active");
-        search.value = "";
-
-        let exitAnimations = [];
-        if (!reduceMotion && outgoingSections.length > 0) {
-            exitAnimations = outgoingSections.map(section => {
-                section.style.willChange = "transform, opacity";
-                const animation = section.animate(
-                    [
-                        { opacity: 1, transform: "perspective(1000px) translate3d(0, 0, 0) rotateY(0) scale(1)" },
-                        {
-                            opacity: 0,
-                            transform: `perspective(1000px) translate3d(${-direction * 110}px, -26px, 0) rotateY(${-direction * 14}deg) scale(.96)`
-                        }
-                    ],
-                    {
-                        duration: 460,
-                        easing: "cubic-bezier(.65, 0, .85, .35)",
-                        fill: "forwards"
-                    }
-                );
-                activeCategoryAnimations.add(animation);
-                return animation;
-            });
-
-            await Promise.all(exitAnimations.map(animation =>
-                animation.finished.catch(() => undefined)
-            ));
-            if (transition !== categoryTransition) return;
-        }
-
-        selectedCategory = tab.dataset.target;
-        filterRules();
-        exitAnimations.forEach(animation => {
-            activeCategoryAnimations.delete(animation);
-            animation.cancel();
-        });
-        outgoingSections.forEach(section => section.style.willChange = "");
-
-        if (!reduceMotion && (!wasTargetVisible || outgoingSections.length > 0)) {
-            targetSection.style.willChange = "transform, opacity";
-            const enterAnimation = targetSection.animate(
-                [
-                    {
-                        opacity: 0,
-                        transform: `perspective(1000px) translate3d(${direction * 110}px, 26px, 0) rotateY(${direction * 14}deg) scale(.96)`
-                    },
-                    { opacity: 1, transform: "perspective(1000px) translate3d(0, 0, 0) rotateY(0) scale(1)" }
-                ],
-                {
-                    duration: 620,
-                    easing: "cubic-bezier(.16, 1, .3, 1)",
-                    fill: "both"
-                }
-            );
-            activeCategoryAnimations.add(enterAnimation);
-
-            await enterAnimation.finished.catch(() => undefined);
-            activeCategoryAnimations.delete(enterAnimation);
-            enterAnimation.cancel();
-            targetSection.style.willChange = "";
-        }
-
-        if (transition === categoryTransition) {
-            isSwitchingCategory = false;
-        }
-    });
-});
-
-window.addEventListener("scroll", () => {
-    if (search.value.trim() || isSwitchingCategory) return;
-    if (tabs.some(tab => tab.dataset.article)) return;
-
-    const visibleSections = sections.filter(
-        section => !section.classList.contains("hidden")
-    );
-    if (visibleSections.length === 0) return;
-
-    let current = visibleSections[0];
-
-    visibleSections.forEach(section => {
-        if (section.getBoundingClientRect().top < 180) {
-            current = section;
-        }
-    });
-
-    tabs.forEach(tab => {
-        tab.classList.toggle(
-            "active",
-            tab.dataset.target === current.id
-        );
-    });
-});
-</script>
-
+    </script>
 </body>
 </html>
